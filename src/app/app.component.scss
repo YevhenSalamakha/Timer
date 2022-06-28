@@ -5,18 +5,25 @@
     width: 500px;
     height: 500px;
     background-color: rgb(63, 188, 255);
-    border-radius: 30%;
+    border-radius: 50%;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
       rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
+    #title {
+      margin-left: 40%;
+    }
+
     #counter {
-      padding-left: 240px;
-      padding-top: 25px;
-      font-size: 40px;
+      padding-left: 235px;
+      padding-top: 130px;
+	  margin-bottom: 20px;
+      font-size: 50px;
+      color: white;
     }
 
     .btn-container {
-      padding-left: 110px;
+      padding-left: 100px;
+	  padding-top: 20px;
 
       .btn {
         margin-left: 10px;
@@ -24,7 +31,7 @@
         background: #404040;
         color: #ffffff;
         font-weight: 100;
-        padding: 20px;
+        padding: 25px;
         text-transform: uppercase;
         border-radius: 6px;
         text-decoration: none;
