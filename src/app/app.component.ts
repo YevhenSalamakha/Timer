@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Observable, timer } from 'rxjs';
-import { Subscription, interval } from 'rxjs';
+import { timer } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,27 +10,37 @@ import { Subscription, interval } from 'rxjs';
 export class AppComponent {
   title = 'TimerTask';
   sub: Subscription;
-  counter = 0;
+  counter: number;
+  tick = 1000;
 
-  constructor() {}
+  constructor() {
+    this.counter = 0;
+  }
 
-  start() {
-    const intervalStream$ = interval(1000);
-
-    this.sub = intervalStream$.subscribe(() => {
+  startTimer() {
+    this.sub = timer(this.counter, this.tick).subscribe(() => {
       this.counter += 1;
     });
   }
 
-  stop() {
-    this.sub.unsubscribe();
+  stopTimer() {
+    this.unsubscribeTimer();
+    this.counter = 0;
   }
 
-  reset() {
-    this.sub.unsubscribe();
+  waitTimer() {
+    this.unsubscribeTimer();
+  }
+
+  resetTimer() {
+    this.unsubscribeTimer();
     this.counter = 0;
     setTimeout(() => {
-      this.start();
+      this.startTimer();
     }, 300);
+  }
+
+  unsubscribeTimer() {
+    this.sub.unsubscribe();
   }
 }
